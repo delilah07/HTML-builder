@@ -14,8 +14,8 @@ const copyDir = async (folder) => {
 
   const files = await fsPromise.readdir(firstDir, { withFileTypes: true });
   files.forEach((file) => {
-    src = path.join(firstDir, file.name);
-    dest = path.join(destDir, file.name);
+    let src = path.join(firstDir, file.name);
+    let dest = path.join(destDir, file.name);
     if (file.isDirectory()) {
       copyDir(src, dest);
     } else {
@@ -23,7 +23,7 @@ const copyDir = async (folder) => {
     }
   });
 
-  console.log('Файлы скопированы');
+  console.log('\n-----------\nФайлы скопированы\n-----------\n');
 };
 copyDir('files');
 
